@@ -1,0 +1,24 @@
+# From: https://github.com/github/gitignore/blob/master/Android.gitignore
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+proguard/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+
+# romanows added below
+doc/javadoc
+*.swp  # VIM temporary files
+.*.swp
