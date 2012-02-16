@@ -103,7 +103,6 @@ public class SQLiteChecklistActivity extends ListActivity {
                 new int[] {R.id.text, R.id.checkbox});
 
         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
-            @Override
             public boolean setViewValue(View view, final Cursor cursor, int columnIndex) {
                 if(columnIndex == 2) {
                     CheckBox checkbox = (CheckBox)view;
@@ -111,7 +110,6 @@ public class SQLiteChecklistActivity extends ListActivity {
                     checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                         final int id = cursor.getInt(cursor.getColumnIndex("_id"));
 
-                        @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             /*
                              * For some reason, onCheckedChanged is called whenever checkboxes scroll
