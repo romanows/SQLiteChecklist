@@ -1,9 +1,9 @@
 # Overview
 An eclipse project that is a minimal example of an SQLite-backed   
 scrolling list with checkboxes for each list item.  Clicking the   
-checkboxes persist change to the database.   
+checkboxes persist the changes to the database.   
 
-<img src="http://github.com/romanows/SQLiteChecklist/raw/master/screenshot.png" alt="Screenshot of running example app, showing list items and checkboxes" />
+<img style="float:right;" src="http://github.com/romanows/SQLiteChecklist/raw/master/screenshot.png" alt="Screenshot of running example app, showing list items and checkboxes" />
 
 This code works, but the major downside is that all database   
 operations are performed in the UI-thread.  Each time the checkbox   
@@ -32,11 +32,13 @@ A <code>ViewBinder</code> handles setting the checkbox to the correct state.  It
 also sets the <code>OnCheckedChangeListener</code> that is used to update the    
 database on checkbox change and then requery the cursor.   
 
-One odd thing is that <code>onCheckedChanged()</code> is called whenever a checkbox    
-scrolls out of view.  The checked state has not changed, and we'd    
-rather not hit the database for this action.  It <em>seems</em> that we    
-can detect a non-checkbox-toggling call by checking the return value    
-of <code>isShown()</code>.   
+One odd thing is that <code>onCheckedChanged()</code> is called when a checkbox    
+scrolls out of view. In this case, the checked state of the row's    
+checkbox has not changed.  It would be inefficent to query or update   
+the database each time a row scrolls off screen, so we use the   
+<code>isShown()</code> method to determine whether the checkbox is on-   
+screen when the listener is notified.  This <em>seems</em> to provide the   
+expected behavior.
 
 
 # Possible Improvements
