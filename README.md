@@ -1,14 +1,15 @@
 # Overview
-An eclipse project that is a minimal example of an SQLite-backed   
-scrolling list with checkboxes for each list item.  Clicking the   
+This is an example Android Eclipse project that creates an   
+SQLite-backed scrolling list with checkboxes.  Clicking the   
 checkboxes persist the changes to the database.   
 
 <img style="float:right;" src="http://github.com/romanows/SQLiteChecklist/raw/master/screenshot.png" alt="Screenshot of running example app, showing list items and checkboxes" />
 
-This code works, but the major downside is that all database   
-operations are performed in the UI-thread.  Each time the checkbox   
-state is changed, a new cursor is created, rerunning the list query.   
-This can cause slowdowns and "application not responding" warnings.   
+This is a minimal example that should work, but it has the downside   
+that all database operations are performed in the UI-thread. Each    
+time the checkbox state is changed, a new cursor is created, rerunning   
+the list query. This can cause slowdowns and "application not responding"   
+warnings.   
 
 Brian Romanowski   
 romanows@gmail.com   
@@ -16,7 +17,7 @@ romanows@gmail.com
 
 # Explanation
 The main activity is <tt><a href="http://github.com/romanows/SQLiteChecklist/raw/master/src/com/pwnetics/example/SQLiteChecklistActivity.java">SQLiteChecklistActivity.java</a></tt>.  The list row   
-layout is specified (fairly trivially) in <tt><a href="http://github.com/romanows/SQLiteChecklist/raw/master/res/layout/list_text_checkbox.xml">list_text_checkbox.xml</a></tt>.     
+layout is specified in <tt><a href="http://github.com/romanows/SQLiteChecklist/raw/master/res/layout/list_text_checkbox.xml">list_text_checkbox.xml</a></tt>.     
 
 The SQLiteChecklistActivity's <code>onCreate()</code> method starts by getting a   
 dummy database.  The <code>DatabaseHelper</code> class exists to initialize this    
