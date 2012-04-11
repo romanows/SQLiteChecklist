@@ -1,9 +1,5 @@
-The file android-support-v4.jar is Copyright (C) 2010 The Android Open Source Project.
-The file android-support-v4.jar is licensed under the Apache License, Version 2.0, 
-which can be obtained at: http://www.apache.org/licenses/LICENSE-2.0
-
-
-The rest is Copyright 2012 Brian Romanowski. All rights reserved.
+/*
+Copyright 2012 Brian Romanowski. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are
 permitted provided that the following conditions are met:
@@ -27,3 +23,35 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 The views and conclusions contained in the software and documentation are those of the
 authors.
+*/
+
+
+package com.pwnetics.example;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+
+
+/**
+ * Main activity run by this application, serves only to start and host the {@link SQLChecklistListFragment}.
+ * @author romanows
+ */
+public class SQLChecklistFragmentActivity extends FragmentActivity {
+    private static final String LOG_TAG = SQLChecklistFragmentActivity.class.getName();
+
+    /*
+     * (non-Javadoc)
+     * @see android.support.v4.app.FragmentActivity#onCreate(android.os.Bundle)
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.v(LOG_TAG, "onCreate()");
+        super.onCreate(savedInstanceState);
+
+        if(savedInstanceState == null) {
+        	Log.d(LOG_TAG, "programatically adding fragment to activity");
+			getSupportFragmentManager().beginTransaction().add(android.R.id.content, new SQLChecklistListFragment()).commit();
+		}
+    }
+}
